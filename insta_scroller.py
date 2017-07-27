@@ -1,9 +1,3 @@
-#! /usr/bin/env python
-'''
-Copyright (C) 2012  Diego Torres Milano
-Created on Oct 1, 2012
-@author: diego
-'''
 import time
 
 import re
@@ -26,24 +20,23 @@ component = package + "/." + activity
 
 device.startActivity(component=component)
 
-time.sleep(1)
-
 vc = ViewClient(device=device, serialno=serialno)
 
 content_list = vc.findViewByIdOrRaise("android:id/list")
-print content_list
 
 snapshotIdx = 0
 
-while True:
-    content_list.uiScrollable.flingForward()
+print [method for method in dir(content_list.uiScrollable) if callable(getattr(content_list.uiScrollable, method))]
 
-    vc = ViewClient(device=device, serialno=serialno)
-    subtitle = vc.findViewById("com.instagram.android:id/row_feed_photo_subtitle")
+
+while False:
+    content_list.uiScrollable
+
+    # vc = ViewClient(device=device, serialno=serialno)
+    vc.dump(content_list.getId())
+
+    subtitle = vc.findViewWithText("Sponsored")
 
     if subtitle is not None:
-        vc = ViewClient(device=device, serialno=serialno)
-        print subtitle.getText()
-        if "Sponsored" in subtitle.getText():
-            device.takeSnapshot().save('my_snapshot_{}.png'.format(snapshotIdx), 'PNG')
-            snapshotIdx += 1
+        os.system("adb exec-out screencap -p > my_snapshot_{}.png".format(snapshotIdx))
+        snapshotIdx = snapshotIdx + 1
