@@ -1,5 +1,0 @@
-from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
-
-device = MonkeyRunner.waitForConnection()
-
-device.shell("am start -a \"android.intent.category.LAUNCHER\" -n \"com.instagram.android/.activity.MainTabActivity\"")
