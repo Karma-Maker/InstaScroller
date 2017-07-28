@@ -9,7 +9,7 @@ try:
 except:
     pass
 
-from com.dtmilano.android.viewclient import ViewClient, TextView, EditText
+from viewclient import ViewClient
 
 device, serialno = ViewClient.connectToDeviceOrExit()
 
@@ -35,5 +35,5 @@ while True:
     subtitle = vc.findViewWithText("Sponsored")
 
     if subtitle is not None:
-        os.system("adb exec-out screencap -p > my_snapshot_{}.png".format(snapshotIdx))
+        os.system("bin/adb exec-out screencap -p > my_snapshot_{}.png".format(snapshotIdx))
         snapshotIdx = snapshotIdx + 1
