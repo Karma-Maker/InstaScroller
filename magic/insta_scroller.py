@@ -13,6 +13,10 @@ except:
 
 from viewclient import ViewClient
 
+os.system("magic/bin/adb start-server")
+
+time.sleep(1)
+
 device, serialno = ViewClient.connectToDeviceOrExit()
 
 
