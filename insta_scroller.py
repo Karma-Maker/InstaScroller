@@ -26,11 +26,8 @@ content_list = vc.findViewByIdOrRaise("android:id/list")
 
 snapshotIdx = 0
 
-print [method for method in dir(content_list.uiScrollable) if callable(getattr(content_list.uiScrollable, method))]
-
-
-while False:
-    content_list.uiScrollable
+while True:
+    content_list.uiScrollable.flingForward()
 
     # vc = ViewClient(device=device, serialno=serialno)
     vc.dump(content_list.getId())
