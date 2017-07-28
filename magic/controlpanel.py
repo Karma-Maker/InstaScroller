@@ -2,19 +2,19 @@
 '''
     Copyright (C) 2012-2017  Diego Torres Milano
     Created on oct 30, 2014
-    
+
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-    
+
     @author: Diego Torres Milano
     @author: Ahmed Kasem
     '''
@@ -24,7 +24,7 @@ __version__ = '13.4.0'
 import Tkinter
 import ttk
 
-from com.dtmilano.android.culebron import Operation, Color
+from culebron import Operation, Color
 
 
 class Key:
@@ -60,7 +60,7 @@ class ControlPanel(Tkinter.Toplevel):
     def createKeycodeTab(self):
         ''' KEYCODE '''
         self.keycodeList = [
-                             'KEYCODE_HOME', 'KEYCODE_DPAD_UP', 'KEYCODE_BACK', 'KEYCODE_SEARCH', 'KEYCODE_CHANNEL_UP', 'KEYCODE_TV', 
+                             'KEYCODE_HOME', 'KEYCODE_DPAD_UP', 'KEYCODE_BACK', 'KEYCODE_SEARCH', 'KEYCODE_CHANNEL_UP', 'KEYCODE_TV',
                              'KEYCODE_MUSIC', 'KEYCODE_EXPLORER', 'KEYCODE_CAMERA', 'KEYCODE_POWER', 'KEYCODE_DPAD_LEFT','KEYCODE_DPAD_DOWN',
                              'KEYCODE_DPAD_RIGHT', 'KEYCODE_PAGE_UP', 'KEYCODE_CHANNEL_DOWN', 'KEYCODE_VOLUME_UP', 'KEYCODE_MEDIA_PLAY',
                              'KEYCODE_CONTACTS', 'KEYCODE_ZOOM_IN', 'SNAPSHOPT', 'KEYCODE_MENU', 'KEYCODE_DPAD_CENTER', 'KEYCODE_ENTER',

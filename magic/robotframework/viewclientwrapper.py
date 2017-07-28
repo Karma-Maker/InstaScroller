@@ -23,7 +23,7 @@ __author__ = 'diego'
 
 import sys
 
-from com.dtmilano.android.viewclient import ViewClient
+from viewclient import ViewClient
 
 """A library to integrate *AndroidViewClient/culebra* tests with Robotframework.
 
@@ -31,7 +31,7 @@ To import this wrapper you have to use::
 
 **Settings**
 ...
-Library     com.dtmilano.android.robotframework.viewclientwrapper.ViewClientWrapper   serialno=<your-device>
+Library     robotframework.viewclientwrapper.ViewClientWrapper   serialno=<your-device>
 
 
 This documentation is created using reStructuredText__.
@@ -102,4 +102,3 @@ class ViewClientWrapper:
 
     def is_keyboard_show(self):
         return self.device.isKeyboardShown()
-

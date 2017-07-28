@@ -19,7 +19,7 @@ try:
 except:
     pass
 
-from com.dtmilano.android.viewclient import ViewClient, View, ViewClientOptions
+from viewclient import ViewClient, View, ViewClientOptions
 
 HELP = 'help'
 VERBOSE = 'verbose'
@@ -81,7 +81,7 @@ OPTS_HELP = {
     'a': 'dump all information about Views',
     'i': 'dump View unique IDs',
     'x': 'dump View positions',
-    'b': 'dump View bounds', 
+    'b': 'dump View bounds',
     'd': 'dump View content descriptions',
     'g': 'dump View tags',
     'c': 'dump View centers',

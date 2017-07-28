@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import time
 
 import re
@@ -34,6 +36,9 @@ while True:
 
     subtitle = vc.findViewWithText("Sponsored")
 
+    if subtitle is None:
+        subtitle = vc.findViewWithText("Реклама")
+
     if subtitle is not None:
-        os.system("bin/adb exec-out screencap -p > my_snapshot_{}.png".format(snapshotIdx))
+        os.system("magic/bin/adb exec-out screencap -p > snapshots/my_snapshot_{}.png".format(snapshotIdx))
         snapshotIdx = snapshotIdx + 1

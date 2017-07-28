@@ -23,9 +23,9 @@ import random
 import re
 import time
 
-from com.dtmilano.android.common import profileEnd
-from com.dtmilano.android.common import profileStart
-from com.dtmilano.android.concertina import Concertina
+from common import profileEnd
+from common import profileStart
+from concertina import Concertina
 
 __version__ = '13.4.0'
 
@@ -216,7 +216,7 @@ This is usually installed by python package. Check your distribution details.
     def __init__(self, vc, device, serialno, printOperation, scale=1, concertina=False):
         '''
         Culebron constructor.
-        
+
         @param vc: The ViewClient used by this Culebron instance. Can be C{None} if no back-end is used.
         @type vc: ViewClient
         @param device: The device
@@ -1217,7 +1217,7 @@ This is usually installed by python package. Check your distribution details.
         self.toggleTargetZones()
 
     def showControlPanel(self):
-        from com.dtmilano.android.controlpanel import ControlPanel
+        from controlpanel import ControlPanel
 
         self.controlPanel = ControlPanel(self, self.printOperation)
 
@@ -1690,7 +1690,7 @@ if TKINTER_AVAILABLE:
         def insert(self, parent, index, iid=None, **kw):
             """Creates a new item and return the item identifier of the newly
             created item.
-    
+
             parent is the item ID of the parent item, or the empty string
             to create a new top-level item. index is an integer, or the value
             end, specifying where in the list of parent's children to insert
@@ -1903,7 +1903,7 @@ if TKINTER_AVAILABLE:
         def onGrab(self, entry):
             '''
             Generic grab method.
-            
+
             @param entry: the entry being grabbed
             @type entry: Tkinter.Entry
             '''
@@ -1918,7 +1918,7 @@ if TKINTER_AVAILABLE:
             If the starting point is being grabbed it draws the touching point via
             C{Culebron.drawTouchedPoint()} and if the end point is being grabbed it draws
             using C{Culebron.drawDragLine()}.
-            
+
             @param point: the point touched
             @type point: tuple
             '''
@@ -2101,14 +2101,14 @@ if TKINTER_AVAILABLE:
             self.text.insert(Tkinter.INSERT, '''
     Special keys
     ------------
-    
+
     F1: Help
     F5: Refresh
-    
+
     Mouse Buttons
     -------------
     <1>: Touch the underlying View
-    
+
     Commands
     --------
     Ctrl-A: Generates startActivity() call on output script

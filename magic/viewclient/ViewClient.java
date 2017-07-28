@@ -1,5 +1,5 @@
 
-package com.dtmilano.android.viewclient;
+package viewclient;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -122,7 +122,7 @@ public class ViewClient {
 
     /**
      * <em>ViewClient</em>
-     * 
+     *
      * @throws IOException
      */
     public ViewClient(Command cmd, String[] args) throws IOException {
@@ -171,7 +171,7 @@ public class ViewClient {
 
     /**
      * Executes the command in a separate process.
-     * 
+     *
      * @return the exit value of the process
      * @throws IOException
      * @throws InterruptedException
@@ -235,7 +235,7 @@ public class ViewClient {
 
     /**
      * Locates <code>monkeyrunner</code> executable in path.
-     * 
+     *
      * @return the absolute path of <code>monkeyrunner</code> or
      *         <code>null</code> if not found
      */
@@ -272,7 +272,7 @@ public class ViewClient {
     /**
      * Obtains the extra arguments in the command line (following command, which
      * is assumed to be in args[0]).
-     * 
+     *
      * @param args the arguments
      * @return The string array obtained from the arguments
      */

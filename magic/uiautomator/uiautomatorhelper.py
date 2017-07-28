@@ -34,8 +34,8 @@ try:
 except:
     REQUESTS_AVAILABLE = False
 import time
-from com.dtmilano.android.adb.adbclient import AdbClient
-from com.dtmilano.android.common import obtainAdbPath
+from adb.adbclient import AdbClient
+from common import obtainAdbPath
 
 __author__ = 'diego'
 
@@ -86,9 +86,9 @@ class RunTestsThread(threading.Thread):
 
 
 class UiAutomatorHelper:
-    PACKAGE = 'com.dtmilano.android.culebratester'
+    PACKAGE = 'culebratester'
     TEST_CLASS = PACKAGE + '.test'
-    TEST_RUNNER = 'com.dtmilano.android.uiautomatorhelper.UiAutomatorHelperTestRunner'
+    TEST_RUNNER = 'uiautomatorhelper.UiAutomatorHelperTestRunner'
 
     def __init__(self, adbclient, adb=None, localport=9999, remoteport=9999, hostname='localhost'):
         if not REQUESTS_AVAILABLE:

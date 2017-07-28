@@ -19,7 +19,7 @@ limitations under the License.
 import subprocess
 import threading
 
-from com.dtmilano.android.adb.dumpsys import Dumpsys
+from dumpsys import Dumpsys
 
 __version__ = '13.4.1'
 
@@ -44,10 +44,10 @@ import re
 import os
 import platform
 
-from com.dtmilano.android.window import Window
-from com.dtmilano.android.common import _nd, _nh, _ns, obtainPxPy, obtainVxVy, \
+from window import Window
+from common import _nd, _nh, _ns, obtainPxPy, obtainVxVy, \
     obtainVwVh, profileStart, profileEnd
-from com.dtmilano.android.adb.androidkeymap import KEY_MAP
+from adb.androidkeymap import KEY_MAP
 
 DEBUG = False
 DEBUG_SHELL = DEBUG and False
