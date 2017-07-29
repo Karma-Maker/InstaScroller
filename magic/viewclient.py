@@ -2123,9 +2123,9 @@ class UiScrollable(UiCollection):
         self.vertical = True
         self.bounds = view.getBounds()
         (self.x, self.y, self.w, self.h) = view.getPositionAndSize()
-        self.steps = 10
-        self.duration = 800
-        self.swipeDeadZonePercentage = 0.1
+        self.steps = 1
+        self.duration = 1000
+        self.swipeDeadZonePercentage = 0.4
         self.maxSearchSwipes = 10
 
     def flingBackward(self):
@@ -2147,9 +2147,24 @@ class UiScrollable(UiCollection):
         else:
             s = (self.x + self.w * (1.0 - self.swipeDeadZonePercentage), self.y + self.h/2)
             e = (self.x + self.w * self.swipeDeadZonePercentage, self.y + self.h/2)
-        if DEBUG:
-            print >> sys.stderr, "flingForward: view=", self.view.__smallStr__(), self.view.getPositionAndSize()
-            print >> sys.stderr, "self.view.device.drag(%s, %s, %s, %s)" % (s, e, self.duration, self.steps)
+        # if DEBUG:
+            # print >> sys.stderr, "flingForward: view=", self.view.__smallStr__(), self.view.getPositionAndSize()
+        print >> sys.stderr, "self.view.device.drag(%s, %s, %s, %s)" % (s, e, self.duration, self.steps)
+        self.view.device.drag(s, e, self.duration, self.steps, self.view.device.display['orientation'])
+
+    def flingForwardBy(self, fling_distance):
+        if fling_distance < 100:
+            print >> sys.stderr, "Fine like this"
+            return
+
+        startX = self.w/2
+        startY = self.y + fling_distance
+        endY = self.y
+        s = (startX, startY)
+        e = (startX, endY)
+
+        print >> sys.stderr, "self.view.device.drag(%s, %s, %s, %s)" % (s, e, self.duration, self.steps)
+
         self.view.device.drag(s, e, self.duration, self.steps, self.view.device.display['orientation'])
 
     def flingToBeginning(self, maxSwipes=10):
