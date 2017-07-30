@@ -29,13 +29,11 @@ snapshotIdx = 0
 
 while True:
     vc.dump(content_list.getId())
-    firstRow = vc.findViewById("com.instagram.android:id/row_feed_profile_header")
-    if firstRow is not None:
-        content_list.uiScrollable.flingForwardBy(firstRow.getBounds()[0][1] - content_list.getBounds()[0][1] - 200)
-        subtitle = vc.findViewWithText("Sponsored")
+    sponsored_item = vc.findViewWithText("Sponsored")
+    if sponsored_item is not None:
+        content_list.uiScrollable.flingForwardBy(sponsored_item.getBounds()[0][1] - content_list.getBounds()[0][1] * 3)
+        time.sleep(0.1)
+        os.system("magic/bin/adb exec-out screencap -p > snapshots/my_snapshot_{}.png".format(snapshotIdx))
+        snapshotIdx = snapshotIdx + 1
 
-        if subtitle is not None:
-            os.system("magic/bin/adb exec-out screencap -p > snapshots/my_snapshot_{}.png".format(snapshotIdx))
-            snapshotIdx = snapshotIdx + 1
-
-    content_list.uiScrollable.flingForwardBy(content_list.getBounds()[1][1] - content_list.getBounds()[0][1] - 200)
+    content_list.uiScrollable.flingForwardBy(content_list.getBounds()[1][1] - content_list.getBounds()[0][1] * 3)

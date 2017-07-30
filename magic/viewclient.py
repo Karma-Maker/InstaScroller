@@ -2124,7 +2124,7 @@ class UiScrollable(UiCollection):
         self.bounds = view.getBounds()
         (self.x, self.y, self.w, self.h) = view.getPositionAndSize()
         self.steps = 1
-        self.duration = 1000
+        self.duration = 250
         self.swipeDeadZonePercentage = 0.4
         self.maxSearchSwipes = 10
 
@@ -2153,9 +2153,11 @@ class UiScrollable(UiCollection):
         self.view.device.drag(s, e, self.duration, self.steps, self.view.device.display['orientation'])
 
     def flingForwardBy(self, fling_distance):
-        if fling_distance < 100:
+        if fling_distance < self.h / 6:
             print >> sys.stderr, "Fine like this"
             return
+
+        fling_distance = fling_distance / 2 # magic
 
         startX = self.w/2
         startY = self.y + fling_distance
