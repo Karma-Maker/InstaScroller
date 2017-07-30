@@ -31,9 +31,9 @@ while True:
     vc.dump(content_list.getId())
     sponsored_item = vc.findViewWithText("Sponsored")
     if sponsored_item is not None:
-        content_list.uiScrollable.flingForwardBy(sponsored_item.getBounds()[0][1] - content_list.getBounds()[0][1] * 3)
+        content_list.uiScrollable.flingForwardBy(sponsored_item.getBounds()[0][1])
         time.sleep(0.1)
         os.system("magic/bin/adb exec-out screencap -p > snapshots/my_snapshot_{}.png".format(snapshotIdx))
         snapshotIdx = snapshotIdx + 1
 
-    content_list.uiScrollable.flingForwardBy(content_list.getBounds()[1][1] - content_list.getBounds()[0][1] * 3)
+    content_list.uiScrollable.flingForwardBy(content_list.getBounds()[1][1] - content_list.getBounds()[0][1] * 4)

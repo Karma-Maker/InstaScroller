@@ -2153,7 +2153,7 @@ class UiScrollable(UiCollection):
         self.view.device.drag(s, e, self.duration, self.steps, self.view.device.display['orientation'])
 
     def flingForwardBy(self, fling_distance):
-        if fling_distance < self.h / 6:
+        if fling_distance < self.h / 8:
             print >> sys.stderr, "Fine like this"
             return
 
