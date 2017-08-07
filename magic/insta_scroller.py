@@ -22,7 +22,7 @@ def startInstagram():
 #vc = ViewClient(device=device, serialno=serialno)
 
 def scrollBy(scrollDistance):
-    os.system("magic/bin/adb shell input swipe 300 {} 300 0".format(scrollDistance))
+    os.system("magic/bin/adb shell input swipe 300 {} 300 300".format(300 + scrollDistance / 2))
     time.sleep(0.5)
 
 def dump():
@@ -41,49 +41,49 @@ def getNodeBounds(node):
     
     return [left, top, right, bottom] 
 
-sponsoredNode = ""
 snapshotIdx = 0
 
 def findSponsoredNode(node):
-    print node.get('Text')
-    if(node.get('Text') == 'natgeo'):
-        sponsoredNode = node
-        
-        return True
+    if(node.get('text') == 'Sponsored'):
+        print "SPONSORED !!!!"
+        return node
 
     for childNode in node.findall('node'):
-        if(findSponsoredNode(childNode)):
-            return True
+        sponsoredNode = findSponsoredNode(childNode)    
+        if(sponsoredNode is not None):
+            return sponsoredNode
         
-    return False
+    return None
 
 
-def takeSnapshot(snapshotIdx):
-    os.system("magic/bin/adb exec-out screencap -p > snapshots/my_snapshot_{}.png".format(snapshotIdx, '04d'))
+def takeSnapshot(snapshotIdx, imageIdx):
+    os.system("magic/bin/adb exec-out screencap -p > snapshots/snapshot_{}_{}.png".format(snapshotIdx, imageIdx, '04d'))
+
     
-
-#while True:
-#    vc.dump(content_list.getId())
-#    sponsored_item = vc.findViewWithText("Sponsored")
-#    if sponsored_item is not None:
-#        content_list.uiScrollable.flingForwardBy(sponsored_item.getBounds()[0][1])
-#        time.sleep(0.1)
-#        
-#        
-#
-#    content_list.uiScrollable.flingForwardBy(content_list.getBounds()[1][1] - content_list.getBounds()[0][1] * 4)
     
-startInstagram()                    
-screenHeight = 0.5 * getNodeBounds(dump().find('node'))[3]
+startInstagram()   
+
+screenHeight = 555;
 
 while True:
-    scrollBy(screenHeight)
-    sponsoredNode = ""
-    if(findSponsoredNode(dump().find('node'))):
+    try: 
+        root = dump()
+    except:
+        print "Unable to dump this part of the screen" #which is wierd
+        scrollBy(screenHeight)
+        continue
+    
+    if screenHeight == 555:
+        screenHeight = getNodeBounds(root.find('node'))[3]
+    sponsoredNode = findSponsoredNode(root.find('node'))
+    if(sponsoredNode is not None):
         scrollBy(getNodeBounds(sponsoredNode)[1])
-        takeSnapshot(snapshotIdx)
+        takeSnapshot(snapshotIdx, 1)
+        scrollBy(screenHeight / 2)   
+        takeSnapshot(snapshotIdx, 2)
+
         snapshotIdx = snapshotIdx + 1
-        
-        
+            
+    scrollBy(screenHeight)   
     
 
